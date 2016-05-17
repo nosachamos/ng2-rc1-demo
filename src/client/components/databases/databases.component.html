@@ -1,0 +1,23 @@
+
+<div class="db-list-container">
+  <ul>
+    <li *ngFor="let db of dbList">
+      <a [routerLink]="[ db.id ]">{{db.name}}</a><span *ngIf="db.owner"> ({{db.owner}})</span>
+    </li>
+  </ul>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <div *ngIf="errorMessage && !loading" class="error-message">
+    {{errorMessage}}
+    <br/>
+    <br/>
+    <button (click)="refresh()">Retry</button>
+  </div>
+
+  <div class="edit-container">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+

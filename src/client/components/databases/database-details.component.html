@@ -1,0 +1,27 @@
+
+<div class="container">
+
+  <div *ngIf="!loading && database">
+    <div>Id: {{database.id}}</div>
+    <div>Name: {{database.name}}</div>
+    <div>Size: {{database.size | bytes:'kb'}}</div>
+    <div>Owner: {{database.owner}} </div>
+    <div>Created: {{database.created}}</div>
+
+    <br/>
+    <br/>
+    <button (click)="refresh()">Refresh</button>
+  </div>
+
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <div *ngIf="errorMessage && !loading" class="error-message">
+    {{errorMessage}}
+    <br/>
+    <br/>
+    <button (click)="refresh()">Retry</button>
+  </div>
+
+</div>
+
